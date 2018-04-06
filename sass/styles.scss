@@ -1,0 +1,63 @@
+/* ---------- Basic needs ---------- */
+
+@import 'reset';
+
+$font-family: 'Montserrat', Arial, sans-serif;
+
+* { box-sizing: border-box; }
+
+.wrapper {
+	// Font and its properties
+	font-family: $font-family;
+	font-size: 62.5%;
+
+	// Alignment and stretching
+	margin: 0 auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.button {
+	// Default styles
+	cursor: pointer;
+	outline: 0;
+	border: 0;
+}
+
+.coin {
+	// Alignment to the center
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+
+	// Text alignment
+	text-align: center;
+	&__img {
+		// Block displaying so as to add width and height that depends from the width
+		display: block;
+		width: 30em;
+		height: auto;
+	}
+
+	&__button {
+
+		// Width and margin
+		width: 100%;
+		margin-top: 2em;
+		
+		// Font and its properties
+		font-family: $font-family;
+		font-size: 1.4em;
+		padding: 1em;
+
+		// Colors
+		background-color: #FFF;
+		box-shadow: 0 15px 60px rgba(0, 0, 0, .25);
+		border-radius: 25px;
+	}
+}
