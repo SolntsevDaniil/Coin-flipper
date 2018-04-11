@@ -1,30 +1,34 @@
-(function(){
-
-	var doc = document,
-		button = doc.querySelector('.button'),
-		coin = doc.querySelector('.img'),
-		alt = coin.alt,
-		statement;
-
-	function coinFlip() { return (Math.floor(Math.random() * 2) === 0); };
-
-	function handler() {
-		coin.src = '';
-
-		setTimeout(function() {
-			if (statement) {
-				coin.src = 'css/img/tail.jpeg';
-				alt = 'Tail';
-			} else {
-				coin.src = 'css/img/eagle.jpeg';
-				alt = 'Eagle';
-			}
-		}, 250);
+class CoinFlipper {
+	// Constructor init
+	constructor(coin) {
+		this.coin = coin;
 	};
 
-	button.addEventListener('click', function() {
-		statement = coinFlip();
-		handler();
-	});
+	// Random position - eagle or tail
+	statement() { return (Math.floor(Math.random() * 2) === 0); };
 
-}());
+	// Rerender of the coin
+	flip() {
+		this.coin.src = '';
+
+		// Saving the scope
+		let self = this;
+
+		// Image disappear for a moment so as to put a new image
+		setTimeout(function() {
+			if (self.statement()) {
+				self.coin.src = 'css/img/tail.jpeg';
+			} else {
+				self.coin.src = 'css/img/eagle.jpeg';
+			};
+		}, 700);
+	};
+};
+
+// Itit of the vars
+const coin = document.querySelector('.img'),
+	  coinflipper = new CoinFlipper(coin),
+	  button = document.querySelector('.button');
+
+// Adding handler
+button.addEventListener('click', function() { coinflipper.flip(); });
